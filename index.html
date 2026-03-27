@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secret Birthday 🎂</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #000000, #1a1a2e);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #ff4b5c;
+    color: white;
+}
+
+#message {
+    display: none;
+    margin-top: 40px;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+img {
+    width: 250px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    animation: zoomIn 2s ease;
+}
+
+/* ✨ NAME ANIMATION */
+#name {
+    font-size: 40px;
+    margin-top: 20px;
+    letter-spacing: 5px;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff4b5c;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(8) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 320px }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+.glow {
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff4b5c;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔒 Enter Password 🎁</h1>
+    <input type="password" id="password" placeholder="Enter password">
+    <br>
+    <button onclick="checkPassword()">Unlock</button>
+
+    <div id="message">
+        <h1 class="glow">🎉 Happy Birthday 🎂</h1>
+
+        <!-- 🔥 Animated Name -->
+        <div id="name">SHUBHAM</div>
+
+        <!-- 📸 PHOTO -->
+        <img src="photo.jpg" alt="Birthday Photo">
+
+        <p style="font-size:22px; margin-top:20px;">
+            Tu sirf mera bhai nahi, mera best friend hai ❤️<br><br>
+            Hamesha khush reh aur life mein bahut aage badh 🚀<br><br>
+            Love you bhai 💙
+        </p>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid" type="audio/midi">
+</audio>
+
+<script>
+function checkPassword() {
+    var input = document.getElementById("password").value;
+    var correctPassword = "1234";
+
+    if (input === correctPassword) {
+        document.getElementById("message").style.display = "block";
+
+        document.getElementById("music").play();
+
+        confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.6 }
+        });
+
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+</script>
+
+</body>
+</html>
